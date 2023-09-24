@@ -4,7 +4,6 @@
   --font: 'Noto Sans', sans-serif;
   --trans: all 0.3s linear;
 }
-
 body {
   font-family: var(--font);
   margin: 0;
@@ -46,9 +45,9 @@ form {
   justify-self: center;
   padding: 20px;
   grid-area: 3/1;
-  grid-column: span 2;
+  grid-column: span 3;
+  text-align: center;
 }
-
 input {
   font-size: 2rem;
   padding: 20px;
