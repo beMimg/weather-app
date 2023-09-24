@@ -16,7 +16,24 @@ body {
     linear-gradient(rgba(25, 82, 83, 0.5), rgba(0, 0, 0, 0.7)),
     url(./img/polar-lights.jpg) center/cover no-repeat;
   color: white;
+  transition: var(--trans);
 }
+.sunset {
+  background:
+    linear-gradient(rgba(25, 82, 83, 0.5), rgba(0, 0, 0, 0.7)),
+    url(./img/sunset.jpg) center/cover no-repeat;
+}
+.moon {
+  background:
+    linear-gradient(rgba(25, 82, 83, 0.5), rgba(0, 0, 0, 0.7)),
+    url(./img/moon.jpg) center/cover no-repeat;
+}
+.sunrise {
+  background:
+    linear-gradient(rgba(25, 82, 83, 0.5), rgba(0, 0, 0, 0.7)),
+    url(./img/sunrise.jpg) center/cover no-repeat;
+}
+
 h1,
 h2,
 h3,
@@ -35,6 +52,9 @@ p {
   grid-area: 1/3;
   align-self: center;
   justify-self: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--trans);
 }
 .current-info {
   display: grid;
@@ -42,6 +62,15 @@ p {
   align-self: center;
   justify-self: center;
   text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--trans);
+  gap: 10px;
+}
+.condition-icon {
+  display: grid;
+  align-self: center;
+  justify-self: center;
 }
 .day-info {
   display: grid;
@@ -58,7 +87,7 @@ p {
   visibility: hidden;
   transition: var(--trans);
 }
-.day-info-active {
+.active {
   opacity: 1;
   visibility: visible;
 }

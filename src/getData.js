@@ -1,5 +1,6 @@
 const currentInfo = document.querySelector('.current-info');
 const dayInfo = document.querySelector('.day-info');
+const dayDate = document.querySelector('.date');
 
 export const locationURL = {
   albania:
@@ -97,26 +98,62 @@ export const locationURL = {
 async function getDataFrom(url) {
   const response = await fetch(url);
   const thisData = await response.json();
+  console.log(thisData);
   return thisData;
 }
 
 export function getInfo(url) {
-  currentInfo.innerHTML = ' ';
   getDataFrom(url).then((thisData) => {
     let name = thisData.location.name;
     let country = thisData.location.country;
     let currentTemp_C = thisData.current.temp_c;
     let currentTemp_F = thisData.current.temp_f;
-    displayInfo(name, country, currentTemp_C, currentTemp_F);
+    let localTime = thisData.location.localtime;
+    let localHour = localTime.substr(localTime.length - 5);
+    let condition = thisData.current.condition.text;
+    let conditionIcon = thisData.current.condition.icon;
+    handleTimeBackground(localHour);
+    displayInfo(
+      name,
+      country,
+      currentTemp_C,
+      currentTemp_F,
+      localTime,
+      condition,
+      conditionIcon,
+    );
   });
 }
 
-function displayInfo(name, country, currentTemp_C, currentTemp_F) {
+function handleTimeBackground(time) {
+  if (time > '06:00' && time < '08:00') {
+    document.body.classList.add('sunrise');
+  } else if (time > '18:30' && time < '20:00') {
+    document.body.classList.add('sunset');
+  } else if (time > '23:00') {
+    document.body.classList.add('moon');
+  }
+}
+function displayInfo(
+  name,
+  country,
+  currentTemp_C,
+  currentTemp_F,
+  localTime,
+  condition,
+  conditionIcon,
+) {
+  dayDate.textContent = `${localTime}`;
+  dayDate.className = 'date active';
+  dayInfo.className = 'day-info active';
   const title = document.getElementById('title');
   title.textContent = name;
   const subtitle = document.getElementById('subtitle');
   subtitle.textContent = country;
+  currentInfo.className = `current-info active`;
   currentInfo.innerHTML = `
+    <img src="${conditionIcon}" class="condition-icon" alt="">   
+    <h1>${condition}</h1>
     <p>Current Temperature:</p>
     <h1>${currentTemp_C}°C</h1>
     <h1>${currentTemp_F}°F</h1>
@@ -126,7 +163,7 @@ function displayInfo(name, country, currentTemp_C, currentTemp_F) {
 export function getForecastFor(day, url) {
   dayInfo.innerHTML = ' ';
   getDataFrom(url).then((thisData) => {
-    const date = thisData.forecast.forecastday[day].date;
+    // const date = thisData.forecast.forecastday[day].date;
     const sunrise = thisData.forecast.forecastday[day].astro.sunrise;
     const sunset = thisData.forecast.forecastday[day].astro.sunset;
     const maxTemp_c = thisData.forecast.forecastday[day].day.maxtemp_c;
@@ -135,7 +172,6 @@ export function getForecastFor(day, url) {
     const minTemp_f = thisData.forecast.forecastday[day].day.mintemp_f;
 
     displayForecastFor(
-      date,
       sunrise,
       sunset,
       maxTemp_c,
@@ -147,7 +183,6 @@ export function getForecastFor(day, url) {
 }
 
 function displayForecastFor(
-  date,
   sunrise,
   sunset,
   maxTemp_c,
@@ -155,7 +190,6 @@ function displayForecastFor(
   minTemp_c,
   minTemp_f,
 ) {
-  dayInfo.classList.add('day-info-active');
   dayInfo.innerHTML = `
   <div class="row">
         <p>Sunrise:</p>
