@@ -106,18 +106,22 @@ export function getInfo(url) {
     let country = thisData.location.country;
     let currentTemp_C = thisData.current.temp_c;
     let currentTemp_F = thisData.current.temp_f;
-    const title = document.getElementById('title');
-    title.textContent = name;
-    const subtitle = document.getElementById('subtitle');
-    subtitle.textContent = country;
-    currentInfo.innerHTML = `
-      <p>Current Temperature:</p>
-      <h1>${currentTemp_C}</h1>
-      <h1>${currentTemp_F}</h1>
-    `;
-
-    document.body.appendChild(currentInfo);
+    displayInfo(name, country, currentTemp_C, currentTemp_F);
   });
+}
+
+function displayInfo(name, country, currentTemp_C, currentTemp_F) {
+  const title = document.getElementById('title');
+  title.textContent = name;
+  const subtitle = document.getElementById('subtitle');
+  subtitle.textContent = country;
+  currentInfo.innerHTML = `
+    <p>Current Temperature:</p>
+    <h1>${currentTemp_C}</h1>
+    <h1>${currentTemp_F}</h1>
+  `;
+
+  document.body.appendChild(currentInfo);
 }
 
 export function getForecastFor(day, url) {
