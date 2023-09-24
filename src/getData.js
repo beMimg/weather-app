@@ -1,4 +1,5 @@
 const currentInfo = document.querySelector('.current-info');
+const dayInfo = document.querySelector('.day-info');
 
 export const locationURL = {
   albania:
@@ -117,14 +118,13 @@ function displayInfo(name, country, currentTemp_C, currentTemp_F) {
   subtitle.textContent = country;
   currentInfo.innerHTML = `
     <p>Current Temperature:</p>
-    <h1>${currentTemp_C}</h1>
-    <h1>${currentTemp_F}</h1>
+    <h1>${currentTemp_C}°C</h1>
+    <h1>${currentTemp_F}°F</h1>
   `;
-
-  document.body.appendChild(currentInfo);
 }
 
 export function getForecastFor(day, url) {
+  dayInfo.innerHTML = ' ';
   getDataFrom(url).then((thisData) => {
     const date = thisData.forecast.forecastday[day].date;
     const sunrise = thisData.forecast.forecastday[day].astro.sunrise;
@@ -134,7 +134,7 @@ export function getForecastFor(day, url) {
     const minTemp_c = thisData.forecast.forecastday[day].day.mintemp_c;
     const minTemp_f = thisData.forecast.forecastday[day].day.mintemp_f;
 
-    console.log(
+    displayForecastFor(
       date,
       sunrise,
       sunset,
@@ -143,6 +143,35 @@ export function getForecastFor(day, url) {
       minTemp_c,
       minTemp_f,
     );
-    return date, sunrise, sunset, maxTemp_c, maxTemp_f, minTemp_c, minTemp_f;
   });
+}
+
+function displayForecastFor(
+  date,
+  sunrise,
+  sunset,
+  maxTemp_c,
+  maxTemp_f,
+  minTemp_c,
+  minTemp_f,
+) {
+  dayInfo.classList.add('day-info-active');
+  dayInfo.innerHTML = `
+  <div class="row">
+        <p>Sunrise:</p>
+        <h1>${sunrise}</h1>
+      </div>
+      <div class="row">
+        <p>Sunset:</p>
+        <h1>${sunset}</h1>
+      </div>
+      <div class="row">
+        <p>MAX:</p>
+        <h1>${maxTemp_c}°C / ${maxTemp_f}°F</h1>
+      </div>
+      <div class="row">
+        <p>MIN:</p>
+        <h1>${minTemp_c}°C / ${minTemp_f}°F</h1>
+      </div>
+  `;
 }
