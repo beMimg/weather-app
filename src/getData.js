@@ -1,3 +1,5 @@
+const currentInfo = document.querySelector('.current-info');
+
 export const locationURL = {
   albania:
     'http://api.weatherapi.com/v1/forecast.json?key=f1e156d0390f4b18859175609232209&q=Albania&days=7&aqi=yes&alerts=no',
@@ -98,17 +100,26 @@ async function getDataFrom(url) {
 }
 
 export function getInfo(url) {
+  currentInfo.innerHTML = ' ';
   getDataFrom(url).then((thisData) => {
-    const name = thisData.location.name;
-    const country = thisData.location.country;
-    const currentTemp_C = thisData.current.temp_c;
-    const currentTemp_F = thisData.current.temp_f;
-    // today //
-    console.log(name, country, currentTemp_C, currentTemp_F);
+    let name = thisData.location.name;
+    let country = thisData.location.country;
+    let currentTemp_C = thisData.current.temp_c;
+    let currentTemp_F = thisData.current.temp_f;
+    const title = document.getElementById('title');
+    title.textContent = name;
+    const subtitle = document.getElementById('subtitle');
+    subtitle.textContent = country;
+    currentInfo.innerHTML = `
+      <p>Current Temperature:</p>
+      <h1>${currentTemp_C}</h1>
+      <h1>${currentTemp_F}</h1>
+    `;
 
-    return name, country, currentTemp_C, currentTemp_F;
+    document.body.appendChild(currentInfo);
   });
 }
+
 export function getForecastFor(day, url) {
   getDataFrom(url).then((thisData) => {
     const date = thisData.forecast.forecastday[day].date;
@@ -131,6 +142,3 @@ export function getForecastFor(day, url) {
     return date, sunrise, sunset, maxTemp_c, maxTemp_f, minTemp_c, minTemp_f;
   });
 }
-
-getInfo(locationURL.portugal);
-getForecastFor(0, locationURL.portugal);

@@ -1,4 +1,4 @@
-import { locationURL } from './getData';
+import { getInfo, locationURL } from './getData';
 
 export function handleForm() {
   const form = document.querySelector('form');
@@ -10,15 +10,16 @@ export function handleForm() {
     if (locationValue === '' || null) {
       error.classList.add('error-active');
       error.textContent = 'Please enter a valid europe country';
+      // eslint-disable-next-line no-prototype-builtins
     } else if (locationURL.hasOwnProperty(locationValue)) {
-      console.log('true');
-      // display this next
+      const newLocationUrl = locationURL[locationValue];
+      getInfo(newLocationUrl);
     } else {
       error.classList.remove('error-active');
       error.textContent = '';
     }
+    form.reset();
   });
 }
 
 handleForm();
-console.log(locationURL);
