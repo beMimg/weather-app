@@ -14,7 +14,10 @@ export function handleForm() {
     } else if (locationURL.hasOwnProperty(locationValue)) {
       const newLocationUrl = locationURL[locationValue];
       getInfo(newLocationUrl);
-      getForecastFor(0, newLocationUrl); //THIS WILL IN THE FUTURE CHANGE THE DATE. 0 IS DEFAULT
+      getForecastFor(0, newLocationUrl);
+      getForecastFor(1, newLocationUrl);
+      getForecastFor(2, newLocationUrl);
+      getForecastFor(3, newLocationUrl);
     } else {
       error.classList.remove('error-active');
       error.textContent = '';

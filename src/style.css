@@ -107,6 +107,9 @@ form {
   grid-column: span 3;
   text-align: center;
 }
+.deactive {
+  display: none;
+}
 input {
   width: 100%;
   font-size: 1.7rem;
@@ -140,4 +143,39 @@ form button {
 .error-active {
   opacity: 1;
   visibility: visible;
+}
+.footer {
+  display: grid;
+  grid-column: span 3;
+  grid-template-columns: repeat(3, 1fr);
+}
+.day-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin: 20px;
+  border-radius: 12px;
+  gap: 20px;
+  /* opacity: 0;
+  visibility: hidden; */
+}
+.container-header {
+  display: flex;
+  align-items: center;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.main-row {
+  display: flex;
+  align-items: center;
+}
+.img-weather {
+  height: 30px;
+  filter: invert(100%);
 }

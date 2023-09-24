@@ -1,6 +1,8 @@
 const currentInfo = document.querySelector('.current-info');
 const dayInfo = document.querySelector('.day-info');
 const dayDate = document.querySelector('.date');
+const curiosityInfo = document.querySelector('.curiosity');
+const footer = document.querySelector('.footer');
 
 export const locationURL = {
   albania:
@@ -162,27 +164,88 @@ function displayInfo(
 
 export function getForecastFor(day, url) {
   dayInfo.innerHTML = ' ';
+  footer.innerHTML = ' ';
   getDataFrom(url).then((thisData) => {
-    // const date = thisData.forecast.forecastday[day].date;
+    const date = thisData.forecast.forecastday[day].date;
     const sunrise = thisData.forecast.forecastday[day].astro.sunrise;
     const sunset = thisData.forecast.forecastday[day].astro.sunset;
     const maxTemp_c = thisData.forecast.forecastday[day].day.maxtemp_c;
     const maxTemp_f = thisData.forecast.forecastday[day].day.maxtemp_f;
     const minTemp_c = thisData.forecast.forecastday[day].day.mintemp_c;
     const minTemp_f = thisData.forecast.forecastday[day].day.mintemp_f;
+    const condition = thisData.forecast.forecastday[day].day.condition.text;
+    const conditionIcon = thisData.forecast.forecastday[day].day.condition.icon;
+    const avgHumidity = thisData.forecast.forecastday[day].day.avghumidity;
+    const maxWindKph = thisData.forecast.forecastday[day].day.maxwind_kph;
+    const maxWindMph = thisData.forecast.forecastday[day].day.maxwind_mph;
 
-    displayForecastFor(
-      sunrise,
-      sunset,
-      maxTemp_c,
-      maxTemp_f,
-      minTemp_c,
-      minTemp_f,
-    );
+    if (day === 0) {
+      displayForecastForToday(
+        sunrise,
+        sunset,
+        maxTemp_c,
+        maxTemp_f,
+        minTemp_c,
+        minTemp_f,
+      );
+    } else if (day > 0) {
+      displayForecastForDay(
+        day,
+        date,
+        maxTemp_c,
+        maxTemp_f,
+        minTemp_c,
+        minTemp_f,
+        condition,
+        conditionIcon,
+        avgHumidity,
+        maxWindKph,
+        maxWindMph,
+      );
+    }
   });
 }
 
-function displayForecastFor(
+function displayForecastForDay(
+  day,
+  date,
+  maxTemp_c,
+  maxTemp_f,
+  minTemp_c,
+  minTemp_f,
+  condition,
+  conditionIcon,
+  avgHumidity,
+  maxWindKph,
+  maxWindMph,
+) {
+  curiosityInfo.classList.add('deactive');
+  let dayContainer = document.createElement('div');
+  dayContainer.className = 'day-container';
+  dayContainer.innerHTML = `
+  <div class="container-header">
+    <img src="${conditionIcon}" alt="" />
+    <h1>${condition}</h1>
+  </div>
+  <div class="main">
+    <p>MAX: <strong> ${maxTemp_c}°C / ${maxTemp_f}°F </strong></p>
+    <p>MIN: <strong>${minTemp_c}°C /${minTemp_f}°F</strong></p>
+  <div class="main-row">
+    <img src="/src/img/weather-windy.svg" class="img-weather" alt="" />
+    <p>${maxWindKph}kph / ${maxWindMph}mph</p>
+  </div>
+  <div class="main-row">
+    <img src="/src/img/water.svg" class="img-weather" alt="" />
+    <p>${avgHumidity}%</p>
+  </div>
+  </div>
+  <h3>${date}</h3>
+  `;
+
+  footer.appendChild(dayContainer);
+}
+
+function displayForecastForToday(
   sunrise,
   sunset,
   maxTemp_c,
