@@ -18,9 +18,12 @@ export function handleForm() {
       getForecastFor(1, newLocationUrl);
       getForecastFor(2, newLocationUrl);
       getForecastFor(3, newLocationUrl);
-    } else {
       error.classList.remove('error-active');
-      error.textContent = '';
+      error.textContent = ' ';
+      // eslint-disable-next-line no-prototype-builtins
+    } else if (!locationURL.hasOwnProperty(locationValue)) {
+      error.classList.add('error-active');
+      error.textContent = `${locationValue} is not an European country`;
     }
     form.reset();
   });
