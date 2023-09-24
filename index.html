@@ -1,11 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/be7f0e2488.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Weather App</title>
   </head>
   <body>
+    <div class="header">
+      <h1>EUWeather</h1>
+      <p>Check weather in all Europe</p>
+    </div>
+    <form>
+      <input
+        type="text"
+        name="location"
+        id="location"
+        autocomplete="off"
+        placeholder="Portugal"
+      />
+      <button type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <span class="error">Please insert a valid country in europe</span>
+    </form>
+    <div class="curiosity">
+      <h2>Did you know?</h2>
+      <p id="random_curiosity">
+        Hottest Place on Earth: The hottest temperature ever recorded on Earth
+        was 134°F (56.7°C) in Furnace Creek Ranch, Death Valley, California, in
+        1913.
+      </p>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
