@@ -100,7 +100,6 @@ export const locationURL = {
 async function getDataFrom(url) {
   const response = await fetch(url);
   const thisData = await response.json();
-  console.log(thisData);
   return thisData;
 }
 
@@ -188,7 +187,35 @@ export function getForecastFor(day, url) {
         minTemp_c,
         minTemp_f,
       );
-    } else if (day > 0) {
+    } else if (day === 1) {
+      displayForecastForDay(
+        day,
+        date,
+        maxTemp_c,
+        maxTemp_f,
+        minTemp_c,
+        minTemp_f,
+        condition,
+        conditionIcon,
+        avgHumidity,
+        maxWindKph,
+        maxWindMph,
+      );
+    } else if (day === 2) {
+      displayForecastForDay(
+        day,
+        date,
+        maxTemp_c,
+        maxTemp_f,
+        minTemp_c,
+        minTemp_f,
+        condition,
+        conditionIcon,
+        avgHumidity,
+        maxWindKph,
+        maxWindMph,
+      );
+    } else if (day === 3) {
       displayForecastForDay(
         day,
         date,
