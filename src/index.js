@@ -1,3 +1,4 @@
+import './style.css';
 const locationURL = {
   al: 'http://api.weatherapi.com/v1/forecast.json?key=f1e156d0390f4b18859175609232209&q=Albania&days=7&aqi=yes&alerts=no',
   ad: 'http://api.weatherapi.com/v1/forecast.json?key=f1e156d0390f4b18859175609232209&q=Andorra&days=7&aqi=yes&alerts=no',
@@ -87,5 +88,3 @@ function getForecastFor(day, url) {
     return date, sunrise, sunset, maxTemp_c, maxTemp_f, minTemp_c, minTemp_f;
   });
 }
-
-getInfo(locationURL.by);
