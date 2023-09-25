@@ -3,35 +3,57 @@ const dayInfo = document.querySelector('.day-info');
 const dayDate = document.querySelector('.date');
 const curiosityInfo = document.querySelector('.curiosity');
 const footer = document.querySelector('.footer');
+const title = document.getElementById('title');
+const subtitle = document.getElementById('subtitle');
 
 async function getDataFrom(url) {
   const response = await fetch(url);
   const thisData = await response.json();
-  console.log(thisData);
   return thisData;
 }
 
-export function getInfo(url) {
-  getDataFrom(url).then((thisData) => {
-    let name = thisData.location.name;
-    let country = thisData.location.country;
-    let currentTemp_C = thisData.current.temp_c;
-    let currentTemp_F = thisData.current.temp_f;
-    let localTime = thisData.location.localtime;
-    let localHour = localTime.substr(localTime.length - 5);
-    let condition = thisData.current.condition.text;
-    let conditionIcon = thisData.current.condition.icon;
-    handleTimeBackground(localHour);
-    displayInfo(
-      name,
-      country,
-      currentTemp_C,
-      currentTemp_F,
-      localTime,
-      condition,
-      conditionIcon,
-    );
-  });
+export function getInfo(url, locationValue) {
+  getDataFrom(url)
+    .then((thisData) => {
+      let name = thisData.location.name;
+      let country = thisData.location.country;
+      let currentTemp_C = thisData.current.temp_c;
+      let currentTemp_F = thisData.current.temp_f;
+      let localTime = thisData.location.localtime;
+      let localHour = localTime.substr(localTime.length - 5);
+      let condition = thisData.current.condition.text;
+      let conditionIcon = thisData.current.condition.icon;
+      handleTimeBackground(localHour);
+      displayInfo(
+        name,
+        country,
+        currentTemp_C,
+        currentTemp_F,
+        localTime,
+        condition,
+        conditionIcon,
+      );
+    })
+    .catch(() => {
+      displayError(
+        `Cant find "${locationValue}". Please make sure this is a legit location.`,
+      );
+    });
+}
+
+function displayError(msg) {
+  const error = document.querySelector('.error');
+  error.textContent = msg;
+  error.classList.add('error-active');
+  title.textContent = 'Globe Weather';
+  subtitle.textContent = 'Your Global Weather Companion';
+  currentInfo.className = 'current-info';
+  currentInfo.innerHTML = '';
+  dayDate.className = 'date';
+  dayDate.innerHTML = '';
+  dayInfo.className = 'day-info ';
+  dayInfo.innerHTML = '';
+  curiosityInfo.className = 'curiosity';
 }
 
 function handleTimeBackground(time) {
@@ -56,9 +78,7 @@ function displayInfo(
   dayDate.textContent = `${localTime}`;
   dayDate.className = 'date active';
   dayInfo.className = 'day-info active';
-  const title = document.getElementById('title');
   title.textContent = name;
-  const subtitle = document.getElementById('subtitle');
   subtitle.textContent = country;
   currentInfo.className = `current-info active`;
   currentInfo.innerHTML = `
@@ -96,23 +116,6 @@ export function getForecastFor(day, url) {
         minTemp_c,
         minTemp_f,
       );
-      // for (let i = 1; i < 4; i++) {
-      //   if (day === i) {
-      //     displayForecastForDay(
-      //       day,
-      //       date,
-      //       maxTemp_c,
-      //       maxTemp_f,
-      //       minTemp_c,
-      //       minTemp_f,
-      //       condition,
-      //       conditionIcon,
-      //       avgHumidity,
-      //       maxWindKph,
-      //       maxWindMph,
-      //     );
-      //   }
-      // }
     } else if (day === 1) {
       displayForecastForDay(
         day,
