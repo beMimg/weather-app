@@ -127,11 +127,12 @@ export function getInfo(url) {
 }
 
 function handleTimeBackground(time) {
+  console.log(time);
   if (time > '06:00' && time < '08:00') {
     document.body.classList.add('sunrise');
   } else if (time > '18:30' && time < '20:00') {
     document.body.classList.add('sunset');
-  } else if (time > '23:00') {
+  } else if (time > '23:00' && time > '0:00') {
     document.body.classList.add('moon');
   }
 }
@@ -187,6 +188,23 @@ export function getForecastFor(day, url) {
         minTemp_c,
         minTemp_f,
       );
+      // for (let i = 1; i < 4; i++) {
+      //   if (day === i) {
+      //     displayForecastForDay(
+      //       day,
+      //       date,
+      //       maxTemp_c,
+      //       maxTemp_f,
+      //       minTemp_c,
+      //       minTemp_f,
+      //       condition,
+      //       conditionIcon,
+      //       avgHumidity,
+      //       maxWindKph,
+      //       maxWindMph,
+      //     );
+      //   }
+      // }
     } else if (day === 1) {
       displayForecastForDay(
         day,
