@@ -116,35 +116,7 @@ export function getForecastFor(day, url) {
         minTemp_c,
         minTemp_f,
       );
-    } else if (day === 1) {
-      displayForecastForDay(
-        day,
-        date,
-        maxTemp_c,
-        maxTemp_f,
-        minTemp_c,
-        minTemp_f,
-        condition,
-        conditionIcon,
-        avgHumidity,
-        maxWindKph,
-        maxWindMph,
-      );
-    } else if (day === 2) {
-      displayForecastForDay(
-        day,
-        date,
-        maxTemp_c,
-        maxTemp_f,
-        minTemp_c,
-        minTemp_f,
-        condition,
-        conditionIcon,
-        avgHumidity,
-        maxWindKph,
-        maxWindMph,
-      );
-    } else if (day === 3) {
+    } else if (day === 1 || day === 2 || day === 3) {
       displayForecastForDay(
         day,
         date,
