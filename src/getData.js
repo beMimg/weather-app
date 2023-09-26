@@ -163,11 +163,11 @@ function displayForecastDay(
     <p>MAX: <strong> ${maxTemp_c}°C / ${maxTemp_f}°F </strong></p>
     <p>MIN: <strong>${minTemp_c}°C /${minTemp_f}°F</strong></p>
   <div class="main-row">
-    <img src="../src/img/weather-windy.png" class="img-weather" alt="" />
+    <img src="/dist/weather-windy.png" class="img-weather" alt="" />
     <p>${maxWindKph}kph / ${maxWindMph}mph</p>
   </div>
   <div class="main-row">
-    <img src="../src/img/water.png" class="img-weather" alt="" />
+    <img src="/dist/water.png" class="img-weather" alt="" />
     <p>${avgHumidity}%</p>
   </div>
   </div>
@@ -206,11 +206,11 @@ function displayForecastToday(
         <h2>${minTemp_c}°C / ${minTemp_f}°F</h2>
       </div>
       <div class="row">
-      <img src="../src/img/weather-windy.png" class="img-weather" alt="" />
+      <img src="/dist/weather-windy.png" class="img-weather" alt="" />
       <h2>${maxWindKph}kph / ${maxWindMph}mph</h2>
       </div>
       <div class="row">
-      <img src="../src/img/water.png" class="img-weather" alt="" />
+      <img src="/dist/water.png" class="img-weather" alt="" />
       <h2>${avgHumidity}%</h2>
       </div>
   `;
