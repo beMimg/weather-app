@@ -1,8 +1,10 @@
-const currentInfo = document.querySelector('.current-info');
-const dayInfo = document.querySelector('.day-info');
-const dayDate = document.querySelector('.date');
-const curiosityInfo = document.querySelector('.curiosity');
-const footer = document.querySelector('.footer');
+import { displayError, handleTimeBackground } from './utils';
+
+const currentInfo = document.getElementById('current-info');
+const dayInfo = document.getElementById('day-info');
+const dayDate = document.getElementById('date');
+const curiosityInfo = document.getElementById('curiosity');
+const footer = document.getElementById('footer');
 const title = document.getElementById('title');
 const subtitle = document.getElementById('subtitle');
 
@@ -39,30 +41,6 @@ export function getInfo(url, locationValue) {
         `Cant find "${locationValue}". Please make sure this is a legit location.`,
       );
     });
-}
-
-function displayError(msg) {
-  const error = document.querySelector('.error');
-  error.textContent = msg;
-  error.classList.add('error-active');
-  title.textContent = 'Globe Weather';
-  subtitle.textContent = 'Your Global Weather Companion';
-  currentInfo.className = 'current-info';
-  currentInfo.innerHTML = '';
-  dayDate.className = 'date';
-  dayDate.innerHTML = '';
-  dayInfo.className = 'day-info ';
-  dayInfo.innerHTML = '';
-  curiosityInfo.className = 'curiosity';
-  document.body.classList.remove('moon');
-}
-
-function handleTimeBackground(condition) {
-  if (condition === 0) {
-    document.body.classList.add('moon');
-  } else {
-    document.body.classList.remove('moon');
-  }
 }
 
 function displayInfo(
