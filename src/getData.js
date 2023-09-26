@@ -1,6 +1,3 @@
-import waterSVG from './img/water.svg';
-import windSVG from './img/weather-windy.svg';
-
 const currentInfo = document.querySelector('.current-info');
 const dayInfo = document.querySelector('.day-info');
 const dayDate = document.querySelector('.date');
