@@ -64,6 +64,7 @@ function handleTimeBackground(condition) {
     document.body.classList.remove('moon');
   }
 }
+
 function displayInfo(
   name,
   country,
@@ -76,19 +77,21 @@ function displayInfo(
   dayDate.textContent = `${localTime}`;
   dayDate.className = 'date active';
   dayInfo.className = 'day-info active';
-  title.textContent = name;
-  subtitle.textContent = country;
+  title.textContent = country;
+  subtitle.textContent = name;
   currentInfo.className = `current-info active`;
   currentInfo.innerHTML = `
-    <img src="${conditionIcon}" class="condition-icon" alt="">   
-    <h1>${condition}</h1>
+    <div class="current-info-header">
+      <img src="${conditionIcon}" class="condition-icon" alt="">   
+      <h1>${condition}</h1>
+    </div>
     <p>Current Temperature:</p>
     <h1>${currentTemp_C}°C</h1>
     <h1>${currentTemp_F}°F</h1>
   `;
 }
 
-export function getForecastFor(day, url) {
+export function getForecastDay(day, url) {
   dayInfo.innerHTML = ' ';
   footer.innerHTML = ' ';
   getDataFrom(url).then((thisData) => {
@@ -106,16 +109,19 @@ export function getForecastFor(day, url) {
     const maxWindMph = thisData.forecast.forecastday[day].day.maxwind_mph;
 
     if (day === 0) {
-      displayForecastForToday(
+      displayForecastToday(
         sunrise,
         sunset,
         maxTemp_c,
         maxTemp_f,
         minTemp_c,
         minTemp_f,
+        avgHumidity,
+        maxWindKph,
+        maxWindMph,
       );
     } else if (day === 1 || day === 2 || day === 3) {
-      displayForecastForDay(
+      displayForecastDay(
         day,
         date,
         maxTemp_c,
@@ -132,7 +138,7 @@ export function getForecastFor(day, url) {
   });
 }
 
-function displayForecastForDay(
+function displayForecastDay(
   day,
   date,
   maxTemp_c,
@@ -151,7 +157,7 @@ function displayForecastForDay(
   dayContainer.innerHTML = `
   <div class="container-header">
     <img src="${conditionIcon}" alt="" />
-    <h1>${condition}</h1>
+    <h2>${condition}</h2>
   </div>
   <div class="main">
     <p>MAX: <strong> ${maxTemp_c}°C / ${maxTemp_f}°F </strong></p>
@@ -171,30 +177,41 @@ function displayForecastForDay(
   footer.appendChild(dayContainer);
 }
 
-function displayForecastForToday(
+function displayForecastToday(
   sunrise,
   sunset,
   maxTemp_c,
   maxTemp_f,
   minTemp_c,
   minTemp_f,
+  avgHumidity,
+  maxWindKph,
+  maxWindMph,
 ) {
   dayInfo.innerHTML = `
-  <div class="row">
+      <div class="row">
         <p>Sunrise:</p>
-        <h1>${sunrise}</h1>
+        <h2>${sunrise}</h2>
       </div>
       <div class="row">
         <p>Sunset:</p>
-        <h1>${sunset}</h1>
+        <h2>${sunset}</h2>
       </div>
       <div class="row">
         <p>MAX:</p>
-        <h1>${maxTemp_c}°C / ${maxTemp_f}°F</h1>
+        <h2>${maxTemp_c}°C / ${maxTemp_f}°F</h2>
       </div>
       <div class="row">
         <p>MIN:</p>
-        <h1>${minTemp_c}°C / ${minTemp_f}°F</h1>
+        <h2>${minTemp_c}°C / ${minTemp_f}°F</h2>
+      </div>
+      <div class="row">
+      <img src="/src/img/weather-windy.svg" class="img-weather" alt="" />
+      <h2>${maxWindKph}kph / ${maxWindMph}mph</h2>
+      </div>
+      <div class="row">
+      <img src="/src/img/water.svg" class="img-weather" alt="" />
+      <h2>${avgHumidity}%</h2>
       </div>
   `;
 }

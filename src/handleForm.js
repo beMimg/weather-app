@@ -1,4 +1,4 @@
-import { getForecastFor, getInfo } from './getData';
+import { getForecastDay, getInfo } from './getData';
 
 const form = document.querySelector('form');
 const location = document.getElementById('location');
@@ -14,10 +14,10 @@ export function handleForm() {
       error.textContent = 'Please enter a valid europe country';
     } else {
       getInfo(newLocationUrl, locationValue);
-      getForecastFor(0, newLocationUrl);
-      getForecastFor(1, newLocationUrl);
-      getForecastFor(2, newLocationUrl);
-      getForecastFor(3, newLocationUrl);
+      getForecastDay(0, newLocationUrl);
+      getForecastDay(1, newLocationUrl);
+      getForecastDay(2, newLocationUrl);
+      getForecastDay(3, newLocationUrl);
       error.classList.remove('error-active');
       error.textContent = ' ';
     }

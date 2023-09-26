@@ -18,22 +18,11 @@ body {
   color: white;
   transition: var(--trans);
 }
-.sunset {
-  background:
-    linear-gradient(rgba(25, 82, 83, 0.5), rgba(0, 0, 0, 0.7)),
-    url(./img/sunset.jpg) center/cover no-repeat;
-}
 .moon {
   background:
-    linear-gradient(rgba(25, 82, 83, 0.5), rgba(0, 0, 0, 0.7)),
-    url(./img/moon.jpg) center/cover no-repeat;
+    linear-gradient(rgba(38, 60, 109, 0.5), rgba(0, 0, 0, 0.7)),
+    url(./img/stars.jpg) center/cover no-repeat;
 }
-.sunrise {
-  background:
-    linear-gradient(rgba(25, 82, 83, 0.5), rgba(0, 0, 0, 0.7)),
-    url(./img/sunrise.jpg) center/cover no-repeat;
-}
-
 h1,
 h2,
 h3,
@@ -79,7 +68,7 @@ p {
   align-self: center;
   justify-self: center;
   text-align: center;
-  gap: 60px;
+  gap: 10px;
   background-color: rgba(0, 0, 0, 0.4);
   padding: 20px;
   border-radius: 10px;
@@ -155,12 +144,11 @@ form button {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.6);
   margin: 20px;
+  padding: 5px;
   border-radius: 12px;
   gap: 20px;
-  /* opacity: 0;
-  visibility: hidden; */
 }
 .container-header {
   display: flex;
@@ -179,4 +167,9 @@ form button {
 .img-weather {
   height: 30px;
   filter: invert(100%);
+}
+.current-info-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
