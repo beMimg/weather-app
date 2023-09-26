@@ -1,3 +1,6 @@
+import waterSVG from './img/water.svg';
+import windSVG from './img/weather-windy.svg';
+
 const currentInfo = document.querySelector('.current-info');
 const dayInfo = document.querySelector('.day-info');
 const dayDate = document.querySelector('.date');
@@ -167,7 +170,7 @@ function displayForecastDay(
     <p>${maxWindKph}kph / ${maxWindMph}mph</p>
   </div>
   <div class="main-row">
-    <img src="../src/img/water.svg" class="img-weather" alt="" />
+    <img src="${waterSVG}" class="img-weather" alt="" />
     <p>${avgHumidity}%</p>
   </div>
   </div>
