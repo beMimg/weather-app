@@ -1,3 +1,11 @@
+import waterPng from './img/water.png';
+let myWaterPNG = new Image();
+myWaterPNG.src = waterPng;
+
+import windyPng from './img/weather-windy.png';
+let myWindyPNG = new Image();
+myWaterPNG.src = windyPng;
+
 const currentInfo = document.querySelector('.current-info');
 const dayInfo = document.querySelector('.day-info');
 const dayDate = document.querySelector('.date');
@@ -163,11 +171,11 @@ function displayForecastDay(
     <p>MAX: <strong> ${maxTemp_c}°C / ${maxTemp_f}°F </strong></p>
     <p>MIN: <strong>${minTemp_c}°C /${minTemp_f}°F</strong></p>
   <div class="main-row">
-    <img src="/dist/weather-windy.png" class="img-weather" alt="" />
+    <img src="${windyPng}" class="img-weather" alt="" />
     <p>${maxWindKph}kph / ${maxWindMph}mph</p>
   </div>
   <div class="main-row">
-    <img src="/dist/water.png" class="img-weather" alt="" />
+    <img src="${waterPng}" class="img-weather" alt="" />
     <p>${avgHumidity}%</p>
   </div>
   </div>
@@ -206,11 +214,11 @@ function displayForecastToday(
         <h2>${minTemp_c}°C / ${minTemp_f}°F</h2>
       </div>
       <div class="row">
-      <img src="/dist/weather-windy.png" class="img-weather" alt="" />
+      <img src="${windyPng}" class="img-weather" alt="" />
       <h2>${maxWindKph}kph / ${maxWindMph}mph</h2>
       </div>
       <div class="row">
-      <img src="/dist/water.png" class="img-weather" alt="" />
+      <img src="${waterPng}" class="img-weather" alt="" />
       <h2>${avgHumidity}%</h2>
       </div>
   `;
