@@ -206,13 +206,18 @@ form button {
     background-attachment: fixed;
     font-size: 12px;
   }
+  .error {
+    position: absolute;
+    top: 60px;
+    right: 5px;
+  }
   input {
     font-size: 1.2rem;
     padding: 10px;
   }
   form button {
     top: 7px;
-    right: 15px;
+    right: 0px;
     position: absolute;
   }
   .moon {
