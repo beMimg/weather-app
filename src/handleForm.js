@@ -8,7 +8,7 @@ export function handleForm() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const locationValue = location.value;
-    const newLocationUrl = `http://api.weatherapi.com/v1/forecast.json?key=f1e156d0390f4b18859175609232209&q=${locationValue}&days=7&aqi=yes&alerts=no`;
+    const newLocationUrl = `https://api.weatherapi.com/v1/forecast.json?key=f1e156d0390f4b18859175609232209&q=${locationValue}&days=7&aqi=yes&alerts=no`;
     if (locationValue === '' || null) {
       error.classList.add('error-active');
       error.textContent = 'Please enter a valid europe country';
