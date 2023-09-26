@@ -204,6 +204,16 @@ form button {
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
+    font-size: 12px;
+  }
+  input {
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+  form button {
+    top: 7px;
+    right: 15px;
+    position: absolute;
   }
   .moon {
     background-image: rgba(0, 0, 0, 0.6), url(./img/stars.jpg);
