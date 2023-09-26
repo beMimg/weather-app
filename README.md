@@ -4,7 +4,8 @@ Welcome to the Globe Weather! This web application allows you to search for the 
 
 Live Preview
 https://bemimg.github.io/weather-app/
-![Uploading Screenshot from 2023-09-26 20-37-47.png…]()
+![Screenshot from 2023-09-26 20-37-47](https://github.com/beMimg/weather-app/assets/126000960/9f8dd1be-032e-4145-83d5-549e873349ad)
+
 
 
 About the API
