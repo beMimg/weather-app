@@ -70,7 +70,6 @@ p {
   grid-row: span 2;
   align-self: center;
   justify-self: center;
-  text-align: center;
   gap: 10px;
   background-color: rgba(0, 0, 0, 0.4);
   padding: 20px;
@@ -175,6 +174,22 @@ form button {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.water-png {
+  background-image: url(./img/water.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 30px;
+  width: 30px;
+  filter: invert(100%);
+}
+.wind-png {
+  background-image: url(./img/weather-windy.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 30px;
+  width: 30px;
+  filter: invert(100%);
 }
 
 @media (max-width: 767px) {
