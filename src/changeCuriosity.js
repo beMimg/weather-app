@@ -22,5 +22,3 @@ export function displayCuriosity() {
     randomCuriosity.textContent = `${curiosities[curiosityCount]}`;
   }, 6000);
 }
-
-displayCuriosity();
