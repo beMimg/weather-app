@@ -59,6 +59,11 @@ p {
   padding: 20px;
   border-radius: 10px;
 }
+.current-info-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .condition-icon {
   display: grid;
   align-self: center;
@@ -78,10 +83,6 @@ p {
   visibility: hidden;
   transition: var(--trans);
 }
-.active {
-  opacity: 1;
-  visibility: visible;
-}
 form {
   display: grid;
   align-self: center;
@@ -89,18 +90,6 @@ form {
   position: relative;
   grid-area: 2/3;
   margin: 20px;
-}
-.curiosity {
-  display: grid;
-  align-self: center;
-  justify-self: center;
-  padding: 20px;
-  grid-area: 3/1;
-  grid-column: span 3;
-  text-align: center;
-}
-.deactive {
-  display: none;
 }
 input {
   width: 100%;
@@ -136,6 +125,15 @@ form button {
   opacity: 1;
   visibility: visible;
 }
+.curiosity {
+  display: grid;
+  align-self: center;
+  justify-self: center;
+  padding: 20px;
+  grid-area: 3/1;
+  grid-column: span 3;
+  text-align: center;
+}
 .footer {
   display: grid;
   grid-column: span 3;
@@ -156,24 +154,22 @@ form button {
   display: flex;
   align-items: center;
 }
-.main {
+.container-main-horizontal {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.main-row {
+.container-main-vertical {
   display: flex;
   align-items: center;
 }
-.img-weather {
-  height: 30px;
-  filter: invert(100%);
+.active {
+  opacity: 1;
+  visibility: visible;
 }
-.current-info-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.deactive {
+  display: none;
 }
 .water-png {
   background-image: url(./img/water.png);
@@ -206,20 +202,6 @@ form button {
     background-attachment: fixed;
     font-size: 12px;
   }
-  .error {
-    position: absolute;
-    top: 60px;
-    right: 5px;
-  }
-  input {
-    font-size: 1.2rem;
-    padding: 10px;
-  }
-  form button {
-    top: 7px;
-    right: 0px;
-    position: absolute;
-  }
   .moon {
     background-image: rgba(0, 0, 0, 0.6), url(./img/stars.jpg);
     background-size: cover;
@@ -232,6 +214,20 @@ form button {
     align-items: center;
     justify-content: center;
     margin-top: 40px;
+  }
+  input {
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+  form button {
+    top: 7px;
+    right: 0px;
+    position: absolute;
+  }
+  .error {
+    position: absolute;
+    top: 60px;
+    right: 5px;
   }
   .footer {
     display: flex;

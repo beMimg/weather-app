@@ -159,14 +159,14 @@ function displayForecastDay(
     <img src="${conditionIcon}" alt="" />
     <h2>${condition}</h2>
   </div>
-  <div class="main">
+  <div class="container-main-horizontal">
     <p>MAX: <strong> ${maxTemp_c}°C / ${maxTemp_f}°F </strong></p>
     <p>MIN: <strong>${minTemp_c}°C /${minTemp_f}°F</strong></p>
-  <div class="main-row">
+  <div class="container-main-vertical">
     <div class="wind-png"></div>
     <p>${maxWindKph}kph / ${maxWindMph}mph</p>
   </div>
-  <div class="main-row">
+  <div class="container-main-vertical">
   <div class="water-png"></div>
   <p>${avgHumidity}%</p>
   </div>
@@ -206,7 +206,7 @@ function displayForecastToday(
         <h2>${minTemp_c}°C / ${minTemp_f}°F</h2>
       </div>
       <div class="row">
-      <div class="wind-png"></div>
+      <div class="wind-png"></div>  
       <h2>${maxWindKph}kph / ${maxWindMph}mph</h2>
       </div>
       <div class="row">
