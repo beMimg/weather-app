@@ -9,6 +9,7 @@ const subtitle = document.getElementById('subtitle');
 async function getDataFrom(url) {
   const response = await fetch(url);
   const thisData = await response.json();
+  console.log(thisData);
   return thisData;
 }
 
@@ -20,10 +21,10 @@ export function getInfo(url, locationValue) {
       let currentTemp_C = thisData.current.temp_c;
       let currentTemp_F = thisData.current.temp_f;
       let localTime = thisData.location.localtime;
-      let localHour = localTime.substr(localTime.length - 5);
       let condition = thisData.current.condition.text;
       let conditionIcon = thisData.current.condition.icon;
-      handleTimeBackground(localHour);
+      let isDay = thisData.current.is_day;
+      handleTimeBackground(isDay);
       displayInfo(
         name,
         country,
@@ -56,14 +57,11 @@ function displayError(msg) {
   curiosityInfo.className = 'curiosity';
 }
 
-function handleTimeBackground(time) {
-  console.log(time);
-  if (time > '06:00' && time < '08:00') {
-    document.body.classList.add('sunrise');
-  } else if (time > '18:30' && time < '20:00') {
-    document.body.classList.add('sunset');
-  } else if (time > '23:00' && time > '0:00') {
+function handleTimeBackground(condition) {
+  if (condition === 0) {
     document.body.classList.add('moon');
+  } else {
+    document.body.classList.remove('moon');
   }
 }
 function displayInfo(
