@@ -9,7 +9,6 @@ const subtitle = document.getElementById('subtitle');
 async function getDataFrom(url) {
   const response = await fetch(url);
   const thisData = await response.json();
-  console.log(thisData);
   return thisData;
 }
 
@@ -55,6 +54,7 @@ function displayError(msg) {
   dayInfo.className = 'day-info ';
   dayInfo.innerHTML = '';
   curiosityInfo.className = 'curiosity';
+  document.body.classList.remove('moon');
 }
 
 function handleTimeBackground(condition) {

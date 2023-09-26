@@ -55,6 +55,9 @@ p {
   visibility: hidden;
   transition: var(--trans);
   gap: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 10px;
 }
 .condition-icon {
   display: grid;
@@ -86,6 +89,7 @@ form {
   justify-self: center;
   position: relative;
   grid-area: 2/3;
+  margin: 20px;
 }
 .curiosity {
   display: grid;
@@ -107,9 +111,8 @@ input {
   border-radius: 8px;
   border: 1px solid lightgray;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
   color: lightgray;
-  margin-bottom: 30px;
 }
 form button {
   background-color: inherit;
@@ -172,4 +175,37 @@ form button {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+@media (max-width: 767px) {
+  body {
+    /* problem when searching for a location */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    gap: 20px;
+    background-image: rgba(0, 0, 0, 0.6), url(./img/polar-lights.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+  }
+  .moon {
+    background-image: rgba(0, 0, 0, 0.6), url(./img/stars.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+  }
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+  }
 }
