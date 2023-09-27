@@ -1,6 +1,6 @@
-Weather Planet Search App
+Globe Weather 
 
-Welcome to the Globe Weather! This web application allows you to search for the weather conditions on various planets within our solar system. It provides current day weather information and forecasts for the next three days. Whether you're a space enthusiast or just curious about the weather on other planets, this app has got you covered.
+Welcome to the Globe Weather! This web application allows you to search for the weather conditions on various locations. It provides current day weather information and forecasts for the next three days.
 
 Live Preview
 https://bemimg.github.io/weather-app/
