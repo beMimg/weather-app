@@ -74,7 +74,6 @@ export function getForecastDay(url) {
   footer.innerHTML = ' ';
   getDataFrom(url).then((thisData) => {
     for (let i = 0; i <= 3; i++) {
-      console.log(i);
       const date = thisData.forecast.forecastday[i].date;
       const sunrise = thisData.forecast.forecastday[i].astro.sunrise;
       const sunset = thisData.forecast.forecastday[i].astro.sunset;
