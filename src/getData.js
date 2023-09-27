@@ -69,55 +69,56 @@ function displayInfo(
   `;
 }
 
-export function getForecastDay(day, url) {
+export function getForecastDay(url) {
   dayInfo.innerHTML = ' ';
   footer.innerHTML = ' ';
   getDataFrom(url).then((thisData) => {
-    const date = thisData.forecast.forecastday[day].date;
-    const sunrise = thisData.forecast.forecastday[day].astro.sunrise;
-    const sunset = thisData.forecast.forecastday[day].astro.sunset;
-    const maxTemp_c = thisData.forecast.forecastday[day].day.maxtemp_c;
-    const maxTemp_f = thisData.forecast.forecastday[day].day.maxtemp_f;
-    const minTemp_c = thisData.forecast.forecastday[day].day.mintemp_c;
-    const minTemp_f = thisData.forecast.forecastday[day].day.mintemp_f;
-    const condition = thisData.forecast.forecastday[day].day.condition.text;
-    const conditionIcon = thisData.forecast.forecastday[day].day.condition.icon;
-    const avgHumidity = thisData.forecast.forecastday[day].day.avghumidity;
-    const maxWindKph = thisData.forecast.forecastday[day].day.maxwind_kph;
-    const maxWindMph = thisData.forecast.forecastday[day].day.maxwind_mph;
+    for (let i = 0; i <= 3; i++) {
+      console.log(i);
+      const date = thisData.forecast.forecastday[i].date;
+      const sunrise = thisData.forecast.forecastday[i].astro.sunrise;
+      const sunset = thisData.forecast.forecastday[i].astro.sunset;
+      const maxTemp_c = thisData.forecast.forecastday[i].day.maxtemp_c;
+      const maxTemp_f = thisData.forecast.forecastday[i].day.maxtemp_f;
+      const minTemp_c = thisData.forecast.forecastday[i].day.mintemp_c;
+      const minTemp_f = thisData.forecast.forecastday[i].day.mintemp_f;
+      const condition = thisData.forecast.forecastday[i].day.condition.text;
+      const conditionIcon = thisData.forecast.forecastday[i].day.condition.icon;
+      const avgHumidity = thisData.forecast.forecastday[i].day.avghumidity;
+      const maxWindKph = thisData.forecast.forecastday[i].day.maxwind_kph;
+      const maxWindMph = thisData.forecast.forecastday[i].day.maxwind_mph;
 
-    if (day === 0) {
-      displayForecastToday(
-        sunrise,
-        sunset,
-        maxTemp_c,
-        maxTemp_f,
-        minTemp_c,
-        minTemp_f,
-        avgHumidity,
-        maxWindKph,
-        maxWindMph,
-      );
-    } else if (day === 1 || day === 2 || day === 3) {
-      displayForecastDay(
-        day,
-        date,
-        maxTemp_c,
-        maxTemp_f,
-        minTemp_c,
-        minTemp_f,
-        condition,
-        conditionIcon,
-        avgHumidity,
-        maxWindKph,
-        maxWindMph,
-      );
+      if (i === 0) {
+        displayForecastToday(
+          sunrise,
+          sunset,
+          maxTemp_c,
+          maxTemp_f,
+          minTemp_c,
+          minTemp_f,
+          avgHumidity,
+          maxWindKph,
+          maxWindMph,
+        );
+      } else {
+        displayForecastDay(
+          date,
+          maxTemp_c,
+          maxTemp_f,
+          minTemp_c,
+          minTemp_f,
+          condition,
+          conditionIcon,
+          avgHumidity,
+          maxWindKph,
+          maxWindMph,
+        );
+      }
     }
   });
 }
 
 function displayForecastDay(
-  day,
   date,
   maxTemp_c,
   maxTemp_f,
